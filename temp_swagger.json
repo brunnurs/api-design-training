@@ -1,0 +1,118 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "Superheros"
+  },
+  "paths": {
+    "/superheros": {
+      "get": {
+        "summary": "list all superheros",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Not Found"
+          },
+          "404": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new superhero",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Superhero which is added to the store. Contains no ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/superHero"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/superHero_withID"
+            },
+            "headers": {
+              "Location": {
+                "description": "superhero/34",
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/validation_error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "superHero": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Spiderman"
+        },
+        "hasCape": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "superHero_withID": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "34"
+        },
+        "name": {
+          "type": "string",
+          "example": "Spiderman"
+        },
+        "hasCape": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "validation_error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "example": "2344234"
+        },
+        "message": {
+          "type": "string",
+          "example": "Validation Failed"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": {
+              "code" : 5432,
+              "field" : "name",
+              "message" : "name cannot have fancy characters"
+            }
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

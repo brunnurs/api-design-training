@@ -1,0 +1,93 @@
+= Rest API Exercises
+
+== Verbs, actions and HTTP status codes
+
+=== List all superheros
+
+[source, json]
+----
+"/superheros": {
+  "get": {
+    "summary": "list all superheros",
+    "description": "",
+    "responses": {
+      "200": {
+        "description": "Not Found"
+      },
+      "404": {
+        "description": "OK"
+      }
+    }
+  }
+----
+
+
+=== Add superhero "Spiderman"
+
+Some data about Spiderman.
+
+[source, json]
+----
+{
+    name: 'spiderman',
+    hasCape: false
+}
+----
+
+Some more information:
+
+* We don't know Spiderman's ID by now
+* The input might be wrong (e.g. an invalid property). What is a proper response? What should this response contain?
+* What is a proper response from the call?
+* Are there any special HTTP header we should specify in the response?
+* Spiderman is currently in no team, he might join one later...
+
+
+[source, json]
+----
+"/superheros": {
+"post": {
+    "summary": "Add a new superhero",
+    "parameters": [
+      {
+        "in": "body",
+        "name": "body",
+        "description": "Superhero which is added to the store",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/superHero"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Created",
+        "schema": {
+          "$ref": "#/definitions/superHero_withID"
+        },
+        "headers": {
+          "Location": {
+            "description": "superhero/34",
+            "type": "string"
+          }
+        }
+      },
+      "400": {
+        "description": "Invalid input",
+        "schema": {
+          "$ref": "#/definitions/validation_error"
+        }
+      }
+    }
+}
+----
+
+Sources:
+
+* https://en.wikipedia.org/wiki/List_of_HTTP_status_codes[HTTP status codes]
+* https://stackoverflow.com/questions/19199872/best-practice-for-restful-post-response[POST response]
+* http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#useful-post-responses[POST response #2]
+* http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#Errors[Validation errors]
+
+=== Add superhero "Spiderman"
+
