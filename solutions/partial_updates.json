@@ -1,0 +1,105 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Solution: The scale of evil for Man-Ape increased to 8.",
+    "version": "1.0.0",
+    "title": "SuperVillain"
+  },
+  "paths": {
+    "/supervillains/{id}": {
+      "patch": {
+        "summary": "partially updates the suppervillain",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "the id of the super hero to be partiall updated",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "the partial object o updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/superVillain_withOutId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/superVillain_withIdId"
+            },
+            "headers": {
+              "Location": {
+                "description": "superhero/34",
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/validation_error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "superVillain_withOutId": {
+      "type": "object",
+      "properties": {
+        "scaleOfEvil": {
+          "type": "integer",
+          "example": 8
+        }
+      }
+    },
+    "superVillain_withIdId": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "11122"
+        },
+        "name": {
+          "type": "string",
+          "example": "Man-Ape"
+        },
+        "scaleOfEvil": {
+          "type": "integer",
+          "example": 8
+        }
+      }
+    },
+    "validation_error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "example": "2344234"
+        },
+        "message": {
+          "type": "string",
+          "example": "Validation Failed"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": {
+              "code": 5432,
+              "field": "name",
+              "message": "name cannot have fancy characters"
+            }
+          }
+        }
+      }
+    }
+  }
+}

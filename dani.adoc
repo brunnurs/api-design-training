@@ -1,0 +1,31 @@
+Given the datamodel from the TODO.
+
+=== Resources Solutions
+
+. Which are the resources?
+. Can you point out potential problems regarding the 'SuperVillain'?
+. Given 'Superhero' and 'SuperVillain' - what could be possible relations between the two?
+.. Try to give a simple example
+
+TIP: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#restful[Blog post]
+
+=== Verbs
+====  Partial Updates
+
+. Is there a reason why we use PATCH instead of PUT?
+. The scale of evil for Man-Ape increased to 8.
+.. describe the request
+.. describe the response with the given Response Code
+
+== Pagination
+
+In our data sets there is not really the need in pagination yet. What would happend if we would import all Marvel Superheroes?
+The clients would get hunderts of records for a single call. Pagination could be an option.
+. What do we need to know from a client perspective?
+. Describe a possible request and response (Hint: check the Java Spring Pageable object)
+
+== Versioning
+
+As your database grows you have more resources and of course they are not backwads compatible. Invent versioning to your api.
+. Describe the 2 concepts.
+. Make an example for the 2 concepts with the 'Superhero' resource

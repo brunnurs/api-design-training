@@ -1,0 +1,50 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "resources for the given example",
+    "version": "1.0.0",
+    "title": "all resources (as simple get)"
+  },
+  "paths": {
+    "/superheroes": {
+      "get": {
+        "summary": "simple get (example for resource)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/supervillains": {
+      "get": {
+        "summary": "simple get (example for resource)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/teams": {
+      "get": {
+        "summary": "simple get (example for resource)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/abilities": {
+      "get": {
+        "summary": "simple get (example for resource)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "Superheros"
+  },
+  "paths": {
+    "/superheros": {
+      "get": {
+        "summary": "list all superheros in a pageable object envelope",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/superHero_in_evelope"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size of each page",
+            "required": false,
+            "type": "integer"
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "superHero": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "34"
+        },
+        "name": {
+          "type": "string",
+          "example": "Spiderman"
+        },
+        "hasCape": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "superHero_in_evelope": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/superHero"
+          }
+        },
+        "totalPages": {
+          "type": "integer",
+          "example": 2
+        },
+        "totalElements": {
+          "type": "integer",
+          "example": 200
+        },
+        "last": {
+          "type": "string",
+          "example": true
+        },
+        "numberOfElements": {
+          "type": "integer",
+          "example": 100
+        },
+        "size": {
+          "type": "integer",
+          "example": 100
+        },
+        "number": {
+          "type": "integer",
+          "example": 2
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
