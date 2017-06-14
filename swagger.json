@@ -53,6 +53,71 @@
           }
         }
       }
+    },
+    "/superheros/{superheroId}/super-villains": {
+      "get": {
+        "summary": "list all enemies of a superhero",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "superheroId",
+            "description": "ID of the superhero",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "embed",
+            "description": "Load related resource representations",
+            "required": true,
+            "type": "string",
+            "format": "string",
+            "default": "dummy"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/superVillains_withAttributes"
+            }
+          },
+          "404": {
+            "description": "Superhero not Found"
+          }
+        }
+      }
+    },
+    "/super-villains": {
+      "put": {
+        "summary": "Add a new super villain",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Super villain ",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/superVillain"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/superVillain"
+            },
+            "headers": {
+              "Location": {
+                "description": "super-villain/veom",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -83,6 +148,45 @@
         "hasCape": {
           "type": "boolean",
           "example": false
+        }
+      }
+    },
+    "superVillain": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "veom"
+        },
+        "name": {
+          "type": "string",
+          "example": "Venom"
+        },
+        "scaleOfEvil": {
+          "type": "integer",
+          "example": 4
+        }
+      }
+    },
+    "superVillains_withAttributes": {
+      "type": "array",
+      "items": {
+        "example": {
+          "id" : "ares",
+          "name" : "Ares",
+          "scaleOfEvil" : 5,
+          "abilities":[
+            {
+              "id" : 300,
+              "name" : "super human strength",
+              "power": 9
+            },
+            {
+              "id" : 306,
+              "name" : "complete command over any weapon",
+              "power": 5
+            }
+          ]
         }
       }
     },
