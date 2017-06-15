@@ -16,7 +16,7 @@
         }
       }
     },
-    "/supervillains": {
+    "/super-villains": {
       "get": {
         "summary": "simple get (example for resource)",
         "responses": {

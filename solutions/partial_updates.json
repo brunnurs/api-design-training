@@ -29,7 +29,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Created",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/superVillain_withIdId"
             },
@@ -91,11 +91,11 @@
         "errors": {
           "type": "array",
           "items": {
-            "type": "string",
+            "type": "number",
             "example": {
               "code": 5432,
-              "field": "name",
-              "message": "name cannot have fancy characters"
+              "field": "scaleOfEvil",
+              "message": "scaleOfEvil must be numeric"
             }
           }
         }
