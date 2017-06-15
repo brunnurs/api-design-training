@@ -1,0 +1,31 @@
+{
+  "id": 500,
+  "name": "Wonder Woman",
+  "hasCape": "",
+  "available": 1,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/books/0321127420"
+    },
+    "purchase": {
+      "href": "http://localhost:8080/books/0321127420/purchase"
+    },
+    "borrow": {
+      "href": "http://localhost:8080/books/0321127420/borrow-a-copy"
+    },
+    "return": {
+      "href": "http://localhost:8080/books/0321127420/return-a-copy"
+    },
+    "authors": [
+      {
+        "href": "http://localhost:8080/authors/martin_fowler"
+      },
+      {
+        "href": "http://localhost:8080/authors/kendall_scott"
+      }
+    ],
+    "publisher": {
+      "href": "http://localhost:8080/publishe rs/2"
+    }
+  }
+}

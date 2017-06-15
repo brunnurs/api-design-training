@@ -8,14 +8,39 @@
   "paths": {
     "/superheros": {
       "get": {
-        "summary": "list all superheros",
-        "description": "",
+        "summary": "list, filter and sort superheros",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fights",
+            "description": "Super villains this superhero fights against",
+            "required": false,
+            "type": "string",
+            "default": "ares"
+          },
+          {
+            "in": "query",
+            "name": "hasCape",
+            "description": "Is the superhero wearing a cape?",
+            "required": false,
+            "type": "boolean",
+            "default": true
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameters seperated by comma",
+            "required": false,
+            "type": "string",
+            "default": "-name,dummy"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Not Found"
-          },
-          "404": {
-            "description": "OK"
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/superheros_filtering"
+            }
           }
         }
       },
@@ -54,37 +79,37 @@
         }
       }
     },
-    "/superheros/{superheroId}/super-villains": {
+    "/teams/{teamId}/superheros": {
       "get": {
-        "summary": "list all enemies of a superhero",
+        "summary": "list all superheros of a team",
         "description": "",
         "parameters": [
           {
             "in": "path",
-            "name": "superheroId",
-            "description": "ID of the superhero",
+            "name": "teamId",
+            "description": "ID of a superhero team",
             "required": true,
-            "type": "integer"
+            "type": "integer",
+            "default": 1001
           },
           {
             "in": "query",
-            "name": "embed",
+            "name": "expand",
             "description": "Load related resource representations",
-            "required": true,
             "type": "string",
             "format": "string",
-            "default": "dummy"
+            "default": "abilities"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/superVillains_withAttributes"
+              "$ref": "#/definitions/superheros_withAttributes"
             }
           },
           "404": {
-            "description": "Superhero not Found"
+            "description": "Team not Found"
           }
         }
       }
@@ -168,26 +193,40 @@
         }
       }
     },
-    "superVillains_withAttributes": {
+    "superheros_withAttributes": {
       "type": "array",
       "items": {
-        "example": {
-          "id" : "ares",
-          "name" : "Ares",
-          "scaleOfEvil" : 5,
-          "abilities":[
-            {
-              "id" : 300,
-              "name" : "super human strength",
-              "power": 9
-            },
-            {
-              "id" : 306,
-              "name" : "complete command over any weapon",
-              "power": 5
-            }
-          ]
-        }
+        "example": [
+          {
+            "id": 501,
+            "name": "Thing",
+            "hasCape": false,
+            "abilities": [
+              {
+                "id": 300,
+                "name": "super human strength",
+                "power": 9
+              },
+              {
+                "id": 303,
+                "name": "rock-like skin",
+                "power": 7
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "superheros_filtering": {
+      "type": "array",
+      "items": {
+        "example": [
+          {
+            "id": 500,
+            "name": "Wonder Woman",
+            "hasCape": true
+          }
+        ]
       }
     },
     "validation_error": {
