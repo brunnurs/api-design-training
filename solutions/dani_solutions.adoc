@@ -14,7 +14,7 @@ include::{solutiondir}resource_1.json[]
 TIP: define in an early stage if you want to use camel-case, dashorized or snake-case resources
 
 . From the perspective of the superhero to fetch which are his oppenent supervillains?
-.. e.g.[context]/superheroes/503/supervillains/ to fetch 'Thor's supervillains 'Man-Ape'
+.. e.g.[context]/superheroes/503/super-villains/ to fetch 'Thor's supervillains 'Man-Ape'
 
 === Verbs
 ====  Partial Updates
@@ -32,12 +32,13 @@ TIP: http://restful-api-design.readthedocs.io/en/latest/methods.html#patch-vs-pu
 
 == Pagination
 
-. number of elements, total amount of elements, limit, (optional sort and order)
+. number of elements, tot alamount of elements, limit, (optional sort and order)
 .
 [source,json]
 ----
 include::{solutiondir}pagination_1.json[]
 ----
+
 == Versioning
 
 . Either in URL or in header

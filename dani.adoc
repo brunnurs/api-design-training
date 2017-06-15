@@ -23,9 +23,9 @@ In our data sets there is not really the need in pagination yet. What would happ
 The clients would get hunderts of records for a single call. Pagination could be an option.
 . What do we need to know from a client perspective?
 . Describe a possible request and response (Hint: check the Java Spring Pageable object)
+. Is there an alternative? (Hint: see RFC5988)
 
 == Versioning
 
 As your database grows you have more resources and of course they are not backwads compatible. Invent versioning to your api.
 . Describe the 2 concepts.
-. Make an example for the 2 concepts with the 'Superhero' resource
