@@ -234,7 +234,7 @@ SOLUTION hateoas.json
 
     Shifts logic from client to server (opposite approach of e.g. SPAs and GraphQL)
     Smart clients are missing
-    developer culture (hardwired URLS, logic shift from server to client with SPAs)
+    developer culture (hardwired URLS)
     fully discoverable API's are still utopian (and probably useless).
 
 . Do you know largely used API's which already support the HATEOAS standard?

@@ -216,6 +216,7 @@ SOLUTION hateoas.json
 . What advantages/disadvantages do you see in a level 3 REST API?
 
     ...
+
 . Do you know largely used API's which already support the HATEOAS standard?
 
     ...
