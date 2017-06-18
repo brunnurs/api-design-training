@@ -3,23 +3,18 @@
 = RESTful resources
 . Identify and write down the resources in the given superhero model.
 
-      superheroes
-      teams
-      abilities
-      supervillains
+    ...
 
-      SOLUTION: resource_1.json
+    SOLUTION: resource_1.json
 
 . Can you point out potential problems regarding the `SuperVillain` resource?
 
-    there are many valid ways of defining it: super-villains, supervillains, superVillains, super_villains
-
-NOTE: define in an early stage if you want to use camel-case, dashorized or snake-case resources
+    ...
 
 . Given `Superhero` and `SuperVillain` - what could be possible relations between the two?
 .. Try to give a simple example how to fetch all super-villains of a superhero
 
-    GET /superheroes/503/super-villains to fetch 'Thor's supervillains 'Man-Ape'
+    ...
 
 .
 
@@ -33,18 +28,17 @@ TIP: https://stackoverflow.com/questions/778203/are-there-any-naming-convention-
 
     GET /superheroes/create?id=23&name=antman&hasCape=true
 
-    A GET request should never have side effects (idempotent). Use POST or PUT to create resources. Alway deliver data in a JSON body.
+    ...
 
 . You told him his solution might not yet be perfect so he changed the request to a POST. What about it now?
 
     POST  /superheroes/create-hero
 
-    The'create-hero' part is redundant as the POST on /superheroes already states a create.
+    ...
 
 . Sometimes is not so easy to fit actions to the CRUD world. Example Github: how do you implement the `star` `unstar` actions of a GIST?
 
-  PUT /gists/:id/star
-  DELETE /gists/:id/star
+    ...
 
 .
 
@@ -94,7 +88,6 @@ Create the super-villain "Venom". Describe the request & response as well as HTT
 
 * Venom's ID is defined as `veom` (first two and last two letters of the name)
 * In this example we don't care about input validation
-* We would prefer an idempotent call.
 
 Some data about the super villain Venom:
 
@@ -120,7 +113,7 @@ https://stackoverflow.com/questions/797834/should-a-restful-put-operation-return
 
 * Is there a reason why we use PATCH instead of PUT?
 
-    With PUT we would have to provide the full resource, even when just updating one field.
+    ...
 
 Describe the request, response and http headers to increase *scale of evil* for Man-Ape increased to 8.
 
@@ -172,14 +165,7 @@ The clients would get hundreds of records for a single call. Pagination could be
 
 . What do we need to know from a client perspective?
 
-    {
-      "totalPages": 2,
-      "totalElements": 200,
-      "last": true,
-      "numberOfElements": 100,
-      "size": 100,
-      "number": 2
-    }
+    ...
 
 . Describe a possible request and response to list all `superheroes` (Hint: check the Java Spring Pageable object)
 
@@ -187,9 +173,7 @@ The clients would get hundreds of records for a single call. Pagination could be
 
 . Is there an alternative? (Hint: see RFC5988)
 
-    Link:
-    <https://api.github.com/user/repos?page=3&per_page=100>; rel="next",
-    <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"
+    ...
 
 
 TIP: https://developer.github.com/v3/#pagination[Pagination on Github]
@@ -201,18 +185,16 @@ We use the Stripe-API approach (using URL and custom header)
 
 . List the `superhero` resource with version 2.0 of the api. Describe the request.
 
-    GET www.superheroes.com/api/v2/superheroes
+    ...
 
 . Which Version of the API do we get by this request? `GET www.superheroes.com/api/superheroes`
 
-    Always the latest one?
-    Always V1.0 to fulfill the "stable contract" goal?
+    ...
 
 . Superheroes don't wear capes anymore (they have proven to be dangerous) so the `hasCape` field has been removed in *V2.1*
 How do you access this version?
 
-    GET www.superheroes.com/api/superheroes
-    H: api-version: 2.1
+    ...
 
 TIP: https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/[3 different wrong ways] +
 http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#versioning[Versioning]
@@ -233,14 +215,12 @@ SOLUTION hateoas.json
 
 . What advantages/disadvantages do you see in a level 3 REST API?
 
-    Smart clients are missing
-    developer culture (hardwired URLS, logic shift from server to client with SPAs)
-    fully discoverable API's are still utopian (and probably useless).
-
-. Compare HATEOAS with GraphQL
+    ...
 . Do you know largely used API's which already support the HATEOAS standard?
 
-    Spring (as a framework), PayPal
+    ...
+
+. Compare HATEOAS with GraphQL
 
 
 TIP: https://opencredo.com/hal-hypermedia-api-spring-hateoas/[HATEOAS] +

@@ -1,0 +1,253 @@
+= Exercises
+
+= RESTful resources
+. Identify and write down the resources in the given superhero model.
+
+      superheroes
+      teams
+      abilities
+      supervillains
+
+      SOLUTION: resource_1.json
+
+. Can you point out potential problems regarding the `SuperVillain` resource?
+
+    there are many valid ways of defining it: super-villains, supervillains, superVillains, super_villains
+
+NOTE: define in an early stage if you want to use camel-case, dashorized or snake-case resources
+
+. Given `Superhero` and `SuperVillain` - what could be possible relations between the two?
+.. Try to give a simple example how to fetch all super-villains of a superhero
+
+    GET /superheroes/503/super-villains to fetch 'Thor's supervillains 'Man-Ape'
+
+.
+
+TIP: https://stackoverflow.com/questions/778203/are-there-any-naming-convention-guidelines-for-rest-apis[Naming conventions]
+
+= Verbs, actions and HTTP status codes
+
+
+=== Intro
+. A colleague askes your opinion about this request to create a resource. What do you answer him? What problems do you see?
+
+    GET /superheroes/create?id=23&name=antman&hasCape=true
+
+    A GET request should never have side effects (idempotent). Use POST or PUT to create resources. Alway deliver data in a JSON body.
+
+. You told him his solution might not yet be perfect so he changed the request to a POST. What about it now?
+
+    POST  /superheroes/create-hero
+
+    The'create-hero' part is redundant as the POST on /superheroes already states a create.
+
+. Sometimes is not so easy to fit actions to the CRUD world. Example Github: how do you implement the `star` `unstar` actions of a GIST?
+
+  PUT /gists/:id/star
+  DELETE /gists/:id/star
+
+.
+
+TIP: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#restful[non CRUD actions] +
+https://developer.paypal.com/docs/api/[PayPal example]
+
+
+
+=== Add superhero Spiderman
+
+We would like to create the new superhero resource *Spiderman*.
+Describe the request & response as well as HTTP codes and useful headers.
+
+
+*Notes*
+
+* We don't know Spiderman's ID by now
+* The input might be wrong (e.g. an invalid property). What is a proper response? What should this response contain?
+* What is a proper response in case of success?
+* Are there any special HTTP headers we should specify in the response?
+* Spiderman is currently in no team and has no abilities (superhero resource only)
+
+Some data about Spiderman:
+
+    {
+        name: 'spiderman',
+        hasCape: false
+    }
+
+[source,json]
+----
+ SOLUTION: verbs_actions_1.json
+----
+
+
+
+TIP: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes[HTTP status codes] +
+https://stackoverflow.com/questions/19199872/best-practice-for-restful-post-response[POST response] +
+http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#useful-post-responses[POST response #2] +
+http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#Errors[Validation errors]
+
+=== Spiderman needs to fight someone. Add his nemesis "Venom"
+
+Create the super-villain "Venom". Describe the request & response as well as HTTP codes and useful headers.
+
+*Notes*
+
+* Venom's ID is defined as `veom` (first two and last two letters of the name)
+* In this example we don't care about input validation
+
+Some data about the super villain Venom:
+
+    {
+        id: 'veom',
+        name: 'Venom',
+        scaleOfEvil: 4
+    }
+
+
+[source,json]
+----
+ SOLUTION: verbs_actions_2.json
+----
+
+*Sources:*
+
+TIP: https://stackoverflow.com/questions/630453/put-vs-post-in-rest[PUT vs. POST] +
+https://stackoverflow.com/questions/797834/should-a-restful-put-operation-return-something[PUT response value]
+
+
+===   Partial Updates: Man-Ape gets more dangerous...
+
+* Is there a reason why we use PATCH instead of PUT?
+
+    With PUT we would have to provide the full resource, even when just updating one field.
+
+Describe the request, response and http headers to increase *scale of evil* for Man-Ape increased to 8.
+
+*Notes*
+
+* Input validation is required
+* What response do we expect?
+
+[source,json]
+----
+ SOLUTION: verbs_actions_3.json
+----
+
+TIP: https://stackoverflow.com/questions/28459418/rest-api-put-vs-patch-with-real-life-examples[PATCH vs PUT in real life]
+
+=== We would like to see all superheroes of team "Fantastic Four"
+Describe the request & response as well as HTTP codes and useful headers.
+
+*Notes*:
+
+* The specified superhero team id might not exist
+* _Advanced_ We also want to see the abilities of the superheroes - find a way to define this in the request
+
+[source,json]
+----
+ SOLUTION: verbs_actions_4.json
+----
+
+TIP: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#autoloading[Auto loading related resource]
+
+=== Filtering & sorting superheroes
+We would like to see all superheroes which fight _Ares_ and have a cape.
+Furthermore they should get sorted by name in descending and id in ascending order.
+
+_Advanced_: How would you model a full text search on the `superhero` resource? (e.g. for an Elastic Search use case)
+
+
+[source,json]
+----
+ SOLUTION: verbs_actions_5.json
+----
+
+TIP: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#advanced-queries[filtering & sorting]
+
+= Pagination
+=== New heroes incoming...
+In our data sets there is not really the need in pagination yet. What would happen if we would import all Marvel superheroes?
+The clients would get hundreds of records for a single call. Pagination could be an option.
+
+. What do we need to know from a client perspective?
+
+    {
+      "totalPages": 2,
+      "totalElements": 200,
+      "last": true,
+      "numberOfElements": 100,
+      "size": 100,
+      "number": 2
+    }
+
+. Describe a possible request and response to list all `superheroes` (Hint: check the Java Spring Pageable object)
+
+    SOLUTION: pagination_1.json
+
+. Is there an alternative? (Hint: see RFC5988)
+
+    Link:
+    <https://api.github.com/user/repos?page=3&per_page=100>; rel="next",
+    <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"
+
+
+TIP: https://developer.github.com/v3/#pagination[Pagination on Github]
+
+= Versioning
+=== Old Man Logan...
+We implemented incompatible changes in our API and therefore need to release a new version *2.0* of the superhero API.
+We use the Stripe-API approach (using URL and custom header)
+
+. List the `superhero` resource with version 2.0 of the api. Describe the request.
+
+    GET www.superheroes.com/api/v2/superheroes
+
+. Which Version of the API do we get by this request? `GET www.superheroes.com/api/superheroes`
+
+    Always the latest one?
+    Always V1.0 to fulfill the "stable contract" goal?
+
+. Superheroes don't wear capes anymore (they have proven to be dangerous) so the `hasCape` field has been removed in *V2.1*
+How do you access this version?
+
+    GET www.superheroes.com/api/superheroes
+    H: api-version: 2.1
+
+TIP: https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/[3 different wrong ways] +
+http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#versioning[Versioning]
+
+= HATEOAS
+
+=== Our superheroes learn HATEOAS
+Extend the `superhero` resource *Wonder Woman* with stateful links so that an intelligent client can use the API without any prior know-how.
+Use the http://stateless.co/hal_specification.html[HAL format].
+
+[source,json]
+----
+SOLUTION hateoas.json
+----
+
+
+*Further questions*:
+
+. What advantages/disadvantages do you see in a level 3 REST API?
+
+    Shifts logic from client to server (opposite approach of e.g. SPAs and GraphQL)
+    Smart clients are missing
+    developer culture (hardwired URLS, logic shift from server to client with SPAs)
+    fully discoverable API's are still utopian (and probably useless).
+
+. Do you know largely used API's which already support the HATEOAS standard?
+
+    Spring (as a framework), PayPal
+
+. Compare HATEOAS with GraphQL
+
+
+TIP: https://opencredo.com/hal-hypermedia-api-spring-hateoas/[HATEOAS] +
+http://projects.spring.io/spring-hateoas[Spring HATEOAS] +
+https://developer.paypal.com/docs/api/hateoas-links/[PayPal API] +
+http://graphql.org/[The new kind on the block: GraphQL] +
+https://philsturgeon.uk/api/2017/01/24/graphql-vs-rest-overview/[REST vs GraphQL] +
+
+
