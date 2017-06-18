@@ -100,14 +100,11 @@ Create the super-villain "Venom". Describe the request & response as well as HTT
 
 Some data about the super villain Venom:
 
-[source, json]
-----
-{
-    id: 'veom',
-    name: 'Venom',
-    scaleOfEvil: 4
-}
-----
+    {
+        id: 'veom',
+        name: 'Venom',
+        scaleOfEvil: 4
+    }
 
 
 [source,json]
