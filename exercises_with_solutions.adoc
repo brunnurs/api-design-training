@@ -10,7 +10,7 @@
 
       SOLUTION: link:../solutions/resource_1.json[Docs]
 
-link:../solutions/resource_1.json[Docs]
+link:./solutions/resource_1.json[Docs]
 
 . Can you point out potential problems regarding the `SuperVillain` resource?
 
