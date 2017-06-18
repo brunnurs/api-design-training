@@ -6,9 +6,9 @@
     "title": "Superheros"
   },
   "paths": {
-    "/superheros": {
+    "/superheroes": {
       "get": {
-        "summary": "list all superheros in a pageable object envelope",
+        "summary": "list all superheroes in a pageable object envelope",
         "description": "",
         "responses": {
           "200": {
@@ -24,14 +24,16 @@
             "in": "query",
             "description": "page number",
             "required": false,
-            "type": "integer"
+            "type": "integer",
+            "default": 2
           },
           {
             "name": "size",
             "in": "query",
             "description": "size of each page",
             "required": false,
-            "type": "integer"
+            "type": "integer",
+            "default": 100
           }
         ]
       }

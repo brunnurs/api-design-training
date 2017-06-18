@@ -1,0 +1,75 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "Superheros"
+  },
+  "paths": {
+    "/superheroes": {
+      "get": {
+        "summary": "list, filter and sort superheroes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fights",
+            "description": "Super villains this superhero fights against",
+            "required": false,
+            "type": "string",
+            "default": "ares"
+          },
+          {
+            "in": "query",
+            "name": "hasCape",
+            "description": "Is the superhero wearing a cape?",
+            "required": false,
+            "type": "boolean",
+            "default": true
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameters seperated by comma",
+            "required": false,
+            "type": "string",
+            "default": "-name,id"
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "description": "full text search",
+            "required": false,
+            "type": "string",
+            "default": "hero with a blue cape"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/superheroes_filtering"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "superheroes_filtering": {
+      "type": "array",
+      "items": {
+        "example": [
+          {
+            "id": 500,
+            "name": "Wonder Woman",
+            "hasCape": true
+          }
+        ]
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

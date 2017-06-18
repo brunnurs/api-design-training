@@ -1,37 +1,30 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Solution: The scale of evil for Man-Ape increased to 8.",
+    "description": "",
     "version": "1.0.0",
-    "title": "SuperVillain"
+    "title": "Superheros"
   },
   "paths": {
-    "/supervillains/{id}": {
-      "patch": {
-        "summary": "partially updates the suppervillain",
+    "/superheroes": {
+      "post": {
+        "summary": "Add a new superhero",
         "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "the id of the super hero to be partiall updated",
-            "required": true,
-            "type": "number"
-          },
           {
             "in": "body",
             "name": "body",
-            "description": "the partial object o updated",
+            "description": "Superhero which is added to the store. Contains no ID",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/superVillain_withOutId"
+              "$ref": "#/definitions/superHero"
             }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "schema": {
-              "$ref": "#/definitions/superVillain_withIdId"
+              "$ref": "#/definitions/superHero_withID"
             },
             "headers": {
               "Location": {
@@ -41,7 +34,7 @@
             }
           },
           "400": {
-            "description": "Invalid input",
+            "description": "Invalid request",
             "schema": {
               "$ref": "#/definitions/validation_error"
             }
@@ -51,29 +44,33 @@
     }
   },
   "definitions": {
-    "superVillain_withOutId": {
+    "superHero": {
       "type": "object",
       "properties": {
-        "scaleOfEvil": {
-          "type": "integer",
-          "example": 8
+        "name": {
+          "type": "string",
+          "example": "Spiderman"
+        },
+        "hasCape": {
+          "type": "boolean",
+          "example": false
         }
       }
     },
-    "superVillain_withIdId": {
+    "superHero_withID": {
       "type": "object",
       "properties": {
         "id": {
           "type": "integer",
-          "example": "11122"
+          "example": "34"
         },
         "name": {
           "type": "string",
-          "example": "Man-Ape"
+          "example": "Spiderman"
         },
-        "scaleOfEvil": {
-          "type": "integer",
-          "example": 8
+        "hasCape": {
+          "type": "boolean",
+          "example": false
         }
       }
     },
@@ -91,15 +88,19 @@
         "errors": {
           "type": "array",
           "items": {
-            "type": "number",
+            "type": "string",
             "example": {
               "code": 5432,
-              "field": "scaleOfEvil",
-              "message": "scaleOfEvil must be numeric"
+              "field": "name",
+              "message": "name cannot have fancy characters"
             }
           }
         }
       }
     }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
   }
 }

@@ -1,0 +1,75 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "Superheros"
+  },
+  "paths": {
+    "/teams/{teamId}/superheroes": {
+      "get": {
+        "summary": "list all superheroes of a team",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "description": "ID of a superhero team",
+            "required": true,
+            "type": "integer",
+            "default": 1001
+          },
+          {
+            "in": "query",
+            "name": "expand",
+            "description": "Load related resource representations",
+            "type": "string",
+            "format": "string",
+            "default": "abilities"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/superheroes_withAttributes"
+            }
+          },
+          "404": {
+            "description": "Team not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "superheroes_withAttributes": {
+      "type": "array",
+      "items": {
+        "example": [
+          {
+            "id": 501,
+            "name": "Thing",
+            "hasCape": false,
+            "abilities": [
+              {
+                "id": 300,
+                "name": "super human strength",
+                "power": 9
+              },
+              {
+                "id": 303,
+                "name": "rock-like skin",
+                "power": 7
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

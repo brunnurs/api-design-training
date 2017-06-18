@@ -1,31 +1,29 @@
 {
   "id": 500,
   "name": "Wonder Woman",
-  "hasCape": "",
-  "available": 1,
+  "hasCape": true,
   "_links": {
     "self": {
-      "href": "http://localhost:8080/books/0321127420"
+      "href": "http://example.org/superheroes/500"
     },
-    "purchase": {
-      "href": "http://localhost:8080/books/0321127420/purchase"
-    },
-    "borrow": {
-      "href": "http://localhost:8080/books/0321127420/borrow-a-copy"
-    },
-    "return": {
-      "href": "http://localhost:8080/books/0321127420/return-a-copy"
-    },
-    "authors": [
+    "fights": [
       {
-        "href": "http://localhost:8080/authors/martin_fowler"
+        "href": "http://example.org/super-villains/ares"
       },
       {
-        "href": "http://localhost:8080/authors/kendall_scott"
+        "href": "http://example.org/super-villains/luff"
       }
     ],
-    "publisher": {
-      "href": "http://localhost:8080/publishe rs/2"
-    }
+    "abilities":[
+      {
+        "href": "http://example.org/superheroes/500/abilities/300"
+      },
+      {
+        "href": "http://example.org/superheroes/500/abilities/301"
+      },
+      {
+        "href": "http://example.org/superheroes/500/abilities/302"
+      }
+    ]
   }
 }

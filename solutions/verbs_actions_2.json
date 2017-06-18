@@ -1,0 +1,63 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "Superheros"
+  },
+  "paths": {
+    "/super-villains": {
+      "put": {
+        "summary": "Add a new super villain",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Super villain ",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/superVillain"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/superVillain"
+            },
+            "headers": {
+              "Location": {
+                "description": "super-villains/veom",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "superVillain": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "veom"
+        },
+        "name": {
+          "type": "string",
+          "example": "Venom"
+        },
+        "scaleOfEvil": {
+          "type": "integer",
+          "example": 4
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
