@@ -247,7 +247,7 @@ SOLUTION hateoas.json
 TIP: https://opencredo.com/hal-hypermedia-api-spring-hateoas/[HATEOAS] +
 http://projects.spring.io/spring-hateoas[Spring HATEOAS] +
 https://developer.paypal.com/docs/api/hateoas-links/[PayPal API] +
-http://graphql.org/[The new kind on the block: GraphQL] +
+http://graphql.org/[The new kid on the block: GraphQL] +
 https://philsturgeon.uk/api/2017/01/24/graphql-vs-rest-overview/[REST vs GraphQL] +
 
 
