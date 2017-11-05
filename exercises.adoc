@@ -187,7 +187,7 @@ TIP: https://developer.github.com/v3/#pagination[Pagination on Github]
 We implemented incompatible changes in our API and therefore need to release a new version *2.0* of the superhero API.
 We use the Stripe-API approach (using URL and custom header)
 
-. List the `superhero` resource with version 2.0 of the api. Describe the request.
+. Get the `superhero` resource with version 2.0 of the api. Describe the request.
 
     ...
 
@@ -233,5 +233,5 @@ http://projects.spring.io/spring-hateoas[Spring HATEOAS] +
 https://developer.paypal.com/docs/api/hateoas-links/[PayPal API] +
 http://graphql.org/[The new kid on the block: GraphQL] +
 https://philsturgeon.uk/api/2017/01/24/graphql-vs-rest-overview/[REST vs GraphQL] +
-
+https://medium.freecodecamp.org/so-whats-this-graphql-thing-i-keep-hearing-about-baf4d36c20cf[So what’s this GraphQL thing I keep hearing about?]
 
