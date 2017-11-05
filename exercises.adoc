@@ -43,7 +43,8 @@ TIP: https://stackoverflow.com/questions/778203/are-there-any-naming-convention-
 .
 
 TIP: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#restful[non CRUD actions] +
-https://developer.paypal.com/docs/api/[PayPal example]
+https://developer.paypal.com/docs/api/[PayPal example] +
+http://restcookbook.com/HTTP%20Methods/idempotency/[REST & Idempotence]
 
 
 
@@ -78,7 +79,8 @@ Some data about Spiderman:
 TIP: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes[HTTP status codes] +
 https://stackoverflow.com/questions/19199872/best-practice-for-restful-post-response[POST response] +
 http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#useful-post-responses[POST response #2] +
-http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#Errors[Validation errors]
+http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#Errors[Validation errors] +
+https://stackoverflow.com/questions/6324547/how-to-handle-many-to-many-relationships-in-a-restful-api[many to many relations with REST]
 
 === Spiderman needs to fight someone. Add his nemesis "Venom"
 
@@ -127,7 +129,9 @@ Describe the request, response and http headers to increase *scale of evil* for 
  SOLUTION: verbs_actions_3.json
 ----
 
-TIP: https://stackoverflow.com/questions/28459418/rest-api-put-vs-patch-with-real-life-examples[PATCH vs PUT in real life]
+TIP: https://stackoverflow.com/questions/28459418/rest-api-put-vs-patch-with-real-life-examples[PATCH vs PUT in real life] +
+https://stackoverflow.com/questions/41390997/why-patch-is-neither-safe-nor-idempotent[PATCH - neither safe nor idempotent]
+
 
 === We would like to see all superheroes of team "Fantastic Four"
 Describe the request & response as well as HTTP codes and useful headers.
