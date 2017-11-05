@@ -6,21 +6,22 @@
     "title": "SuperVillain"
   },
   "paths": {
-    "/supervillains/{id}": {
+    "/super-villains/{superVillainId}": {
       "patch": {
-        "summary": "partially updates the suppervillain",
+        "summary": "partially updates the super villain",
         "parameters": [
           {
             "in": "path",
-            "name": "id",
-            "description": "the id of the super hero to be partially updated",
+            "name": "superVillainId",
+            "description": "the ID of the super hero to be partially updated",
             "required": true,
-            "type": "number"
+            "type": "string",
+            "default": "mape"
           },
           {
             "in": "body",
             "name": "body",
-            "description": "the partial object o updated",
+            "description": "the partial object",
             "required": true,
             "schema": {
               "$ref": "#/definitions/superVillain_withOutId"
@@ -35,7 +36,7 @@
             },
             "headers": {
               "Location": {
-                "description": "superhero/34",
+                "description": "/super-villains/mape",
                 "type": "string"
               }
             }
@@ -43,7 +44,7 @@
           "400": {
             "description": "Invalid input",
             "schema": {
-              "$ref": "#/definitions/validation_error"
+              "$ref": "#/definitions/patch_validation_error"
             }
           }
         }
@@ -64,8 +65,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "integer",
-          "example": "11122"
+          "type": "string",
+          "example": "mape"
         },
         "name": {
           "type": "string",
@@ -77,7 +78,7 @@
         }
       }
     },
-    "validation_error": {
+    "patch_validation_error": {
       "type": "object",
       "properties": {
         "code": {
@@ -101,5 +102,6 @@
         }
       }
     }
+
   }
 }

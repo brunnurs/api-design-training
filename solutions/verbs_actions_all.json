@@ -122,10 +122,18 @@
         }
       }
     },
-    "/super-villains": {
+    "/super-villains/{superVillainId}": {
       "put": {
         "summary": "Add a new super villain",
         "parameters": [
+          {
+            "in": "path",
+            "name": "superVillainId",
+            "default": "veom",
+            "description": "the already known ID of the super villain we add",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "body",
@@ -150,23 +158,22 @@
             }
           }
         }
-      }
-    },
-    "/supervillains/{id}": {
+      },
       "patch": {
-        "summary": "partially updates the suppervillain",
+        "summary": "partially updates the super villain",
         "parameters": [
           {
             "in": "path",
-            "name": "id",
-            "description": "the id of the super hero to be partiall updated",
+            "name": "superVillainId",
+            "description": "the ID of the super hero to be partially updated",
             "required": true,
-            "type": "number"
+            "type": "string",
+            "default": "mape"
           },
           {
             "in": "body",
             "name": "body",
-            "description": "the partial object o updated",
+            "description": "the partial object",
             "required": true,
             "schema": {
               "$ref": "#/definitions/superVillain_withOutId"
@@ -181,7 +188,7 @@
             },
             "headers": {
               "Location": {
-                "description": "superhero/34",
+                "description": "/super-villains/mape",
                 "type": "string"
               }
             }
@@ -293,8 +300,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "integer",
-          "example": "11122"
+          "type": "string",
+          "example": "mape"
         },
         "name": {
           "type": "string",

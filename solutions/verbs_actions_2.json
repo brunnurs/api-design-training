@@ -6,10 +6,18 @@
     "title": "Superheros"
   },
   "paths": {
-    "/super-villains": {
+    "/super-villains/{superVillainId}": {
       "put": {
         "summary": "Add a new super villain",
         "parameters": [
+          {
+            "in": "path",
+            "name": "superVillainId",
+            "default": "veom",
+            "description": "the already known ID of the super villain we add",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "body",
